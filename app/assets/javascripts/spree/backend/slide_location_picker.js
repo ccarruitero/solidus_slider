@@ -1,4 +1,4 @@
-Spree.routes.admin_slide_locations_search = Spree.pathFor('admin/slide_locations/search');
+let admin_slide_locations_search = Spree.pathFor('admin/slide_locations/search');
 
 $.fn.slideLocationAutocomplete = function (options) {
   'use strict';
@@ -15,7 +15,7 @@ $.fn.slideLocationAutocomplete = function (options) {
     minimumInputLength: 3,
     multiple: multiple,
     initSelection: function (element, callback) {
-      $.get(Spree.routes.admin_slide_locations_search, {
+      $.get(admin_slide_locations_search, {
         ids: element.val().split(','),
         token: Spree.api_key
       }, function (data) {
@@ -23,7 +23,7 @@ $.fn.slideLocationAutocomplete = function (options) {
       });
     },
     ajax: {
-      url: Spree.routes.admin_slide_locations_search,
+      url: admin_slide_locations_search,
       datatype: 'json',
       params: { "headers": { "X-Spree-Token": Spree.api_key } },
       data: function (term, page) {
